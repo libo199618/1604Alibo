@@ -1,0 +1,103 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>测试页面</title>
+</head>
+
+<script type="text/javascript">
+	//获取系统时间，将时间以指定格式显示到页面。  
+	function systemTime() {
+		//获取系统时间。  
+		var dateTime = new Date();
+		var YY = dateTime.getFullYear();
+		var MM = dateTime.getMonth();
+		var DD = dateTime.getDate();
+		var hh = dateTime.getHours();
+		var mm = dateTime.getMinutes();
+		var ss = dateTime.getSeconds();
+
+		//分秒时间是一位数字，在数字前补0。  
+		MM = extra(MM + 1);
+		DD = extra(DD);
+		hh = extra(hh);
+		mm = extra(mm);
+		ss = extra(ss);
+
+		//将时间显示到ID为time的位置，时间格式形如：19:18:02  
+		document.getElementById("time1").innerHTML = YY + "-" + MM + "-" + DD + " " + hh + ":" + mm + ":" + ss;
+
+		//每隔1000ms执行方法systemTime()。  
+		setTimeout("systemTime()", 1000);
+	}
+
+	//补位函数。  
+	function extra(x) {
+		//如果传入数字小于10，数字前补一位0。  
+		if (x < 10) {
+			return "0" + x;
+		} else {
+			return x;
+		}
+	}
+</script>
+
+<body onload="systemTime()">
+	<br /><br />
+	<div>
+		当前时间：<span id="time1"></span>
+	</div>
+	<div align="center">&nbsp;双十一活动节开始时间：&nbsp;<span style="color:green;font-size:40px;">2018-11-11 20:30:00</span></div>
+	<br />
+	<div id="time" class="time" align="center"></div>
+	<script language=javascript>
+		function show_date_time() {
+			window.setTimeout("show_date_time()", 1000);
+			target = new Date(2018, 10, 10, 19, 30, 0); //注意：表示月份的参数介于 0 到 11之间。也就是说，如果希望把月设置为8月，则参数应该是7。         
+			today = new Date();
+
+			timeold = (target.getTime() - today.getTime());
+
+			sectimeold = timeold / 1000
+			secondsold = Math.floor(sectimeold);
+			msPerDay = 24 * 60 * 60 * 1000
+			e_daysold = timeold / msPerDay
+			daysold = Math.floor(e_daysold);
+			e_hrsold = (e_daysold - daysold) * 24;
+			hrsold = Math.floor(e_hrsold);
+			e_minsold = (e_hrsold - hrsold) * 60;
+			minsold = Math.floor((e_hrsold - hrsold) * 60);
+			seconds = Math.floor((e_minsold - minsold) * 60);
+
+			if (daysold < 0) {
+				document.getElementById("time").innerHTML = "逾期,倒计时已经失效";
+			} else {
+				if (daysold < 10) {
+					daysold = "0" + daysold
+				}
+				if (hrsold < 10) {
+					hrsold = "0" + hrsold
+				}
+				if (minsold < 10) {
+					minsold = "0" + minsold
+				}
+				if (seconds < 10) {
+					seconds = "0" + seconds
+				}
+				if (daysold > 0) {
+					document.getElementById("time").innerHTML = "距离双十一活动节还有：<span style='font-size:40px'>" + daysold + "天" + hrsold +
+						"小时" + minsold + "分<span style='color:#ff6633;'>" + seconds + "</span>秒</span>";
+				} else {
+					document.getElementById("time").innerHTML = "距离双十一活动节还有：<span style='color:red;font-size:40px'>" + daysold + "天" +
+						hrsold + "小时" + minsold + "分" + seconds + "秒</span>"; //结束时间小于1天，字体呈红色提醒
+				}
+			}
+		}
+		show_date_time();
+	</script>
+	<br />
+	<?php 
+        
+        echo phpinfo();
+    ?>
+</body>
+</html>
