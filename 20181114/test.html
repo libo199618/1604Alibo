@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+
+</head>
+<body>
+	
+
+<p id="p1" style="height: 100px; width: 100px; background-color: red;">这是一个段落。</p>
+
+<div id="tg">
+	<input type="text" name="" id="" value="" placeholder="输入题干" />
+</div>
+<div id="ss">
+		
+	</div>
+</body>
+</html>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+	$("#p1").click(function(){
+		var tt=$("#tg").clone();
+		$("#ss").append(tt).show();
+	
+});
+
+});
+</script>
