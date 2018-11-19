@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <td>标题</td>
+        <td>添加时间</td>
+        <td>作者</td>
+        <td>内容</td>
+
+    </tr>
+
+    <volist name="list" id="vo">
+        <tr>
+            <td>{$vo.title}</td>
+            <td>{$vo.fatime}</td>
+            <td>{$vo.person}</td>
+            <td>{$vo.content}</td>
+        </tr>
+
+    </volist>
+</table>
+
+</body>
+</html>

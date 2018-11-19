@@ -1,0 +1,32 @@
+ <html>
+ <head></head>
+ <title></title>
+ <body>
+ <form action="__URL__/index" method="post">
+     <input type="text" name="zi">
+     <input type="submit" value="搜索">
+ </form>
+
+
+ <table border="1">
+     <tr>
+         <td>标题</td>
+         <td>添加时间</td>
+         <td>作者</td>
+         <td>操作</td>
+
+     </tr>
+
+ <volist name="list" id="vo">
+     <tr>
+         <td><a href="__URL__/content?id={$vo.id}">{$vo.title}</a></td>
+         <td>{$vo.fatime}</td>
+         <td>{$vo.person}</td>
+         <td><a href="__URL__/del?id={$vo.id}">删除</a></td>
+     </tr>
+
+ </volist>
+ </table>
+ {$page}
+ </body>
+ </html>
